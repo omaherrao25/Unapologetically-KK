@@ -3,34 +3,56 @@ import { useInView } from 'react-intersection-observer'
 
 const steps = [
   {
-    num: '01',
-    icon: '🔍',
+    num: '1',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C5A26E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    ),
     title: 'Awareness',
-    desc: 'Understand what\'s keeping you stuck and the root of your patterns.',
+    desc: "Understand what's keeping you stuck",
   },
   {
-    num: '02',
-    icon: '🌿',
+    num: '2',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C5A26E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
     title: 'Healing',
-    desc: 'Release emotional wounds & patterns that no longer serve you.',
+    desc: 'Release emotional wounds & patterns',
   },
   {
-    num: '03',
-    icon: '🛡',
+    num: '3',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C5A26E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    ),
     title: 'Boundaries',
-    desc: 'Protect your energy and honour your needs without guilt.',
+    desc: 'Protect your energy without guilt',
   },
   {
-    num: '04',
-    icon: '👑',
+    num: '4',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C5A26E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    ),
     title: 'Confidence',
-    desc: 'Rebuild self-worth & inner strength from the inside out.',
+    desc: 'Rebuild self-worth & inner strength',
   },
   {
-    num: '05',
-    icon: '☮️',
+    num: '5',
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C5A26E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
     title: 'Peace',
-    desc: 'Create fulfilling relationships and a life that feels like yours.',
+    desc: 'Create fulfilling relationships & life',
   },
 ]
 
@@ -40,120 +62,141 @@ export default function TransformationFramework() {
   return (
     <section
       id="about"
-      className="relative py-28 lg:py-36 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #EFE7DD 0%, #F7F2EB 100%)' }}
+      style={{ background: '#FFFFFF', padding: '96px 0' }}
     >
-      <div className="orb orb-gold w-[600px] h-[600px] top-[-150px] left-[-150px] opacity-30" />
-      <div className="orb orb-rose w-[400px] h-[400px] bottom-[-100px] right-[-80px] opacity-25" />
+      <div className="max-w-7xl mx-auto px-6 lg:px-12" ref={ref}>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
         {/* Header */}
-        <div ref={ref} className="text-center mb-20">
+        <div style={{ textAlign: 'center', marginBottom: 72 }}>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="eyebrow mb-5"
+            className="eyebrow"
+            style={{ marginBottom: 16 }}
           >
             The Transformation Journey
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="section-heading text-4xl sm:text-5xl lg:text-6xl"
+            transition={{ duration: 0.7, delay: 0.12 }}
+            className="section-heading"
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', marginBottom: 16 }}
           >
             The Emotional Reclamation Method™
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-5 font-sans text-base text-charcoal-muted max-w-xl mx-auto"
+            transition={{ duration: 0.6, delay: 0.22 }}
+            style={{
+              fontFamily: "'Lato', sans-serif",
+              fontSize: '0.95rem',
+              color: '#7D7D7D',
+              maxWidth: 480,
+              margin: '0 auto',
+              lineHeight: 1.6,
+            }}
           >
             A proven 5-step process to help you break free and create lasting change.
           </motion.p>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={inView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.45 }}
-            className="divider-luxury mt-8"
-          />
         </div>
 
-        {/* Steps — Desktop horizontal, Mobile vertical */}
-        <div className="relative">
-          {/* Connector line (desktop only) */}
-          <div className="hidden lg:block absolute top-[52px] left-[10%] right-[10%] h-px"
-            style={{ background: 'linear-gradient(90deg, transparent, #C8A96B40, #C8A96B, #C8A96B40, transparent)' }}
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.15 * i + 0.5 }}
-                className="group flex flex-col items-center text-center relative"
-              >
-                {/* Step circle */}
-                <div className="relative w-[104px] h-[104px] mb-6">
-                  {/* Outer glow ring */}
-                  <div className="absolute inset-0 rounded-full border border-gold/20 group-hover:border-gold/50 transition-colors duration-400 scale-110" />
-                  <div className="absolute inset-0 rounded-full border border-gold/10 group-hover:border-gold/30 transition-colors duration-500 scale-125" />
-
-                  {/* Main circle */}
-                  <div className="w-[104px] h-[104px] rounded-full flex items-center justify-center transition-all duration-400 group-hover:shadow-luxury-hover"
-                    style={{
-                      background: 'linear-gradient(135deg, #ffffff 0%, #F7F2EB 100%)',
-                      boxShadow: '0 4px 30px rgba(200,169,107,0.15)',
-                    }}
-                  >
-                    <div className="flex flex-col items-center">
-                      <span className="text-2xl mb-1 group-hover:scale-110 transition-transform duration-300 inline-block">
-                        {step.icon}
-                      </span>
-                      <span className="font-sans text-[10px] font-semibold text-gold/70 tracking-widest">
-                        {step.num}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Number badge */}
-                  <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center"
-                    style={{ background: 'linear-gradient(135deg, #C8A96B, #B89050)', boxShadow: '0 2px 8px rgba(200,169,107,0.4)' }}
-                  >
-                    <span className="text-white text-[9px] font-bold">{i + 1}</span>
-                  </div>
-                </div>
-
-                <h3 className="font-serif text-xl font-semibold text-charcoal mb-3">
-                  {step.title}
-                </h3>
-                <p className="font-sans text-sm text-charcoal-muted leading-relaxed max-w-[180px]">
-                  {step.desc}
-                </p>
-
-                {/* Underline accent */}
-                <div className="mt-4 h-px w-8 bg-gold/30 group-hover:w-14 group-hover:bg-gold transition-all duration-400" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 1.3 }}
-          className="text-center mt-16"
+        {/* Steps row */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gap: 0,
+          position: 'relative',
+        }}
+          className="steps-grid"
         >
-          <a href="#contact" className="btn-primary">
-            Start Your Transformation
-          </a>
-        </motion.div>
+          {steps.map((step, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 28 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, delay: 0.1 * i + 0.3 }}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                position: 'relative',
+                padding: '0 12px',
+              }}
+            >
+              {/* Connector line — appears between steps */}
+              {i < steps.length - 1 && (
+                <div style={{
+                  position: 'absolute',
+                  top: 40,
+                  left: 'calc(50% + 42px)',
+                  right: 'calc(-50% + 42px)',
+                  height: 1,
+                  background: 'linear-gradient(90deg, #DCC7A1, #EDE4D8)',
+                  zIndex: 0,
+                }} />
+              )}
+
+              {/* Circle icon */}
+              <div className="step-circle" style={{ zIndex: 1, position: 'relative' }}>
+                {step.icon}
+                {/* Number badge */}
+                <span style={{
+                  position: 'absolute',
+                  top: -6,
+                  right: -6,
+                  width: 20,
+                  height: 20,
+                  borderRadius: '50%',
+                  background: '#C5A26E',
+                  color: '#fff',
+                  fontFamily: "'Lato', sans-serif",
+                  fontSize: '0.62rem',
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  {step.num}
+                </span>
+              </div>
+
+              {/* Title */}
+              <p style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '1rem',
+                fontWeight: 500,
+                color: '#1A1A1A',
+                marginBottom: 8,
+              }}>
+                {step.title}
+              </p>
+
+              {/* Desc */}
+              <p style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: '0.78rem',
+                color: '#7D7D7D',
+                lineHeight: 1.55,
+              }}>
+                {step.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .steps-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 32px !important; }
+        }
+        @media (max-width: 580px) {
+          .steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 28px !important; }
+        }
+      `}</style>
     </section>
   )
 }

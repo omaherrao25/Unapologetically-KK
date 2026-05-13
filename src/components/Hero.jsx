@@ -49,8 +49,7 @@ export default function Hero() {
                 marginBottom: 24,
               }}
             >
-              Now it's time to{' '}
-              <span style={{ fontStyle: 'italic' }}>reclaim yourself.</span>
+              Now it's time to reclaim yourself.
             </motion.h1>
 
             {/* Body */}
@@ -183,7 +182,6 @@ export default function Hero() {
               <p style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: '0.95rem',
-                fontStyle: 'italic',
                 color: '#1A1A1A',
                 lineHeight: 1.55,
               }}>
