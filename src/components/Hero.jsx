@@ -1,206 +1,98 @@
 import { motion } from 'framer-motion'
-import { Star } from 'lucide-react'
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 32 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] },
-})
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      style={{ background: '#FFFFFF', paddingTop: 80 }}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 'calc(100vh - 80px)', gap: 0 }}
-          className="hero-grid"
-        >
-          {/* ── LEFT: Content ── */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            paddingTop: 48,
-            paddingBottom: 48,
-            paddingRight: 48,
-          }}
-            className="hero-left"
+    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden flex items-center z-10">
+      <div className="container-custom relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Content */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="z-20"
           >
-            {/* Eyebrow */}
-            <motion.p
-              {...fadeUp(0.1)}
-              className="eyebrow"
-              style={{ marginBottom: 20 }}
-            >
-              You've held everything together.
-            </motion.p>
-
-            {/* Headline */}
-            <motion.h1
-              {...fadeUp(0.25)}
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(2.4rem, 4vw, 3.5rem)',
-                fontWeight: 400,
-                lineHeight: 1.18,
-                color: '#1A1A1A',
-                marginBottom: 24,
-              }}
-            >
-              Now it's time to reclaim yourself.
-            </motion.h1>
-
-            {/* Body */}
-            <motion.p
-              {...fadeUp(0.4)}
-              style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '1rem',
-                fontWeight: 400,
-                color: '#555555',
-                lineHeight: 1.7,
-                maxWidth: 420,
-                marginBottom: 36,
-              }}
-            >
-              Helping women break free from relationship burnout, rebuild
-              self-worth, and create peaceful, fulfilling relationships.
-            </motion.p>
-
-            {/* Buttons */}
-            <motion.div {...fadeUp(0.5)} style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 36 }}>
-              <a href="#contact" className="btn-primary">
+            <span className="label-caps mb-6 block text-muted-rose font-bold">YOU’VE HELD EVERYTHING TOGETHER.</span>
+            <h2 className="text-6xl lg:text-7xl font-bold leading-[1.1] mb-8 text-main">
+              Now it’s time to <br />
+              <span className="text-pink-accent">reclaim yourself.</span>
+            </h2>
+            <p className="text-lg text-secondary mb-10 max-w-lg leading-relaxed">
+              Helping women break free from relationship burnout, rebuild self-worth, and create peaceful, fulfilling relationships.
+            </p>
+            
+            <div className="flex flex-wrap gap-5 mb-12">
+              <a href="#resource" className="btn-primary py-4 px-10 shadow-xl">
                 Book Your Free Strategy Call
               </a>
-              <a href="#coaching" className="btn-outline">
+              <a href="#coaching" className="btn-secondary py-4 px-10">
                 Learn How I Can Help
               </a>
-            </motion.div>
-
-            {/* Social proof */}
-            <motion.div {...fadeUp(0.65)} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              {/* Avatars */}
-              <div style={{ display: 'flex' }}>
-                {['N', 'P', 'A', 'S'].map((init, i) => (
-                  <div
-                    key={i}
-                    className="avatar-ph"
-                    style={{
-                      marginLeft: i === 0 ? 0 : -10,
-                      zIndex: 4 - i,
-                    }}
-                  >
-                    {init}
+            </div>
+            
+            {/* Trusted By */}
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-3">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-pink-100 flex items-center justify-center overflow-hidden">
+                    <img src={`https://i.pravatar.cc/100?img=${i + 20}`} alt="User" />
                   </div>
                 ))}
               </div>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={12} fill="#C5A26E" color="#C5A26E" />
-                  ))}
-                  <span style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.8rem',
-                    fontWeight: 700,
-                    color: '#1A1A1A',
-                    marginLeft: 4,
-                  }}>4.9</span>
+                <div className="flex text-yellow-500 text-sm mb-0.5">
+                  {"★★★★★"} <span className="ml-2 text-main font-bold">4.9</span>
                 </div>
-                <p style={{
-                  fontFamily: "'Lato', sans-serif",
-                  fontSize: '0.75rem',
-                  color: '#7D7D7D',
-                }}>
+                <p className="text-xs font-semibold text-secondary tracking-tight">
                   Trusted by 1,000+ Women Worldwide
                 </p>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Right Content: Image & Floating Cards */}
+          <div className="relative flex justify-center lg:justify-end">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="relative w-full max-w-[500px]"
+            >
+              {/* Main Image Container */}
+              <div className="relative z-10 rounded-[60px] overflow-hidden aspect-[4/5] shadow-2xl">
+                <img 
+                  src="/brain/7f8f530d-429f-43bc-a2bd-d510b060a96d/kk_hero_portrait_1778667131005.png" 
+                  alt="Kanchan Kulkarni" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Floating Quote Card - EXACT MATCH to image placement */}
+              <motion.div 
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="absolute top-1/2 -right-12 lg:-right-20 transform -translate-y-1/2 z-30 glass-card rounded-[40px] p-10 max-w-[280px] shadow-2xl border-white/60"
+              >
+                <div className="text-pink-accent text-5xl font-serif mb-6 opacity-30 leading-none">“</div>
+                <p className="text-main font-semibold italic text-xl leading-tight mb-4">
+                  You deserve love, peace and a life that feels like you again.
+                </p>
+                <div className="flex justify-end">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E89AAA" strokeWidth="1" opacity="0.5">
+                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                   </svg>
+                </div>
+              </motion.div>
+
+              {/* Backing Glow / Decoration */}
+              <div className="absolute -z-10 top-0 left-0 w-full h-full bg-pink-100/30 rounded-full blur-[100px]" />
             </motion.div>
           </div>
 
-          {/* ── RIGHT: Photo area ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            style={{ position: 'relative', overflow: 'hidden' }}
-            className="hero-right"
-          >
-            {/* Photo placeholder — full height */}
-            <div
-              className="photo-placeholder"
-              style={{
-                width: '100%',
-                height: '100%',
-                minHeight: 480,
-                borderRadius: 0,
-                border: 'none',
-                borderLeft: '1px dashed #C5A26E',
-              }}
-            >
-              <div style={{
-                width: 64,
-                height: 64,
-                borderRadius: '50%',
-                background: '#DCC7A1',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7A5E3A" strokeWidth="1.5">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-              <p style={{ fontFamily: "'Lato', sans-serif", fontSize: '0.75rem', color: '#A08060', letterSpacing: '0.1em' }}>
-                Photo of Kanchan Kulkarni
-              </p>
-            </div>
-
-            {/* Floating quote card */}
-            <div
-              className="quote-card"
-              style={{
-                bottom: 40,
-                right: 32,
-                position: 'absolute',
-              }}
-            >
-              <p style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.7rem',
-                fontWeight: 700,
-                color: '#C5A26E',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                marginBottom: 8,
-              }}>
-                ❝
-              </p>
-              <p style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '0.95rem',
-                color: '#1A1A1A',
-                lineHeight: 1.55,
-              }}>
-                You deserve love, peace and a life that feels like you again.
-              </p>
-            </div>
-          </motion.div>
         </div>
       </div>
-
-      {/* Responsive styles */}
-      <style>{`
-        @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr !important; }
-          .hero-left { padding-right: 0 !important; padding-top: 40px !important; }
-          .hero-right { min-height: 360px !important; border-left: none !important; }
-          .quote-card { right: 16px !important; bottom: 16px !important; }
-        }
-      `}</style>
     </section>
   )
 }

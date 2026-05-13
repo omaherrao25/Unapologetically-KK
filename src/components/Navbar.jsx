@@ -1,129 +1,61 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Relationship Coaching', href: '#coaching' },
-  { label: 'About KK', href: '#about' },
-  { label: 'Kara Foundation', href: '#kara' },
-]
+import { motion } from 'framer-motion'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const navLinks = [
+    { name: 'Home', href: '#' },
+    { name: 'Coaching', href: '#coaching' },
+    { name: 'About KK', href: '#about' },
+    { name: 'Kara Foundation', href: '#kara' },
+    { name: 'Success Stories', href: '#testimonials' },
+  ]
+
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled ? 'navbar-scrolled py-3' : 'bg-white py-4'
-        }`}
-        style={{ borderBottom: '1px solid #EDE4D8' }}
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
-
-          {/* Brand — text only, no icon */}
-          <a href="#home" style={{ textDecoration: 'none' }}>
-            <div>
-              <p style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '1rem',
-                fontWeight: 600,
-                color: '#1A1A1A',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                lineHeight: 1.2,
-              }}>
-                Kanchan Kulkarni
-              </p>
-              <p style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.65rem',
-                fontWeight: 400,
-                color: '#7D7D7D',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-              }}>
-                Relationship Expert
-              </p>
-            </div>
-          </a>
-
-          {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map(link => (
-              <a key={link.label} href={link.href} className="nav-link">
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* CTA + Hamburger */}
-          <div className="flex items-center gap-4">
-            <a href="#contact" className="btn-primary hidden sm:inline-flex" style={{ padding: '10px 22px', fontSize: '0.75rem' }}>
-              Book a Call
-            </a>
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden p-2"
-              aria-label="Toggle menu"
-              style={{ color: '#1A1A1A' }}
-            >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+    <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-7xl transition-all duration-500 ${scrolled ? 'top-4' : 'top-6'}`}>
+      <div className={`glass-navbar rounded-[32px] px-8 py-4 flex items-center justify-between shadow-lg border border-white/20`}>
+        {/* Left: Logo */}
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E89AAA" strokeWidth="1.5">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="text-lg font-bold leading-tight tracking-tight">Unapologetically KK</h1>
+            <p className="text-[10px] uppercase tracking-widest text-secondary font-bold opacity-70">Relationship Expert</p>
           </div>
         </div>
-      </header>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            style={{
-              position: 'fixed',
-              top: scrolled ? 60 : 72,
-              left: 0, right: 0,
-              background: '#FFFFFF',
-              borderBottom: '1px solid #EDE4D8',
-              zIndex: 40,
-            }}
-          >
-            <nav className="flex flex-col px-6 py-4 gap-1">
-              {navLinks.map(link => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.9rem',
-                    color: '#1A1A1A',
-                    padding: '12px 0',
-                    borderBottom: '1px solid #F3EAE0',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a href="#contact" className="btn-primary mt-4" onClick={() => setMenuOpen(false)}>
-                Book a Call
-              </a>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        {/* Center: Menu */}
+        <div className="hidden lg:flex items-center gap-10">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-main hover:text-pink-accent transition-colors duration-300"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Right: CTA */}
+        <div className="flex items-center gap-4">
+          <button className="btn-primary text-sm py-2.5 px-6">
+            Book a Call
+          </button>
+        </div>
+      </div>
+    </nav>
   )
 }

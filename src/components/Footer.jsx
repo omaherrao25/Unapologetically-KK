@@ -1,307 +1,94 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { Instagram, Facebook, Youtube, Music } from 'lucide-react'
-
-const quickLinks = ['Home', 'Relationship Coaching', 'About KK', 'Kara Foundation']
-const resources  = ['Blog', 'Podcast', 'Testimonials', 'Contact']
-const legal      = ['Privacy Policy', 'Terms of Use']
-
-const socials = [
-  { Icon: Instagram, href: '#', label: 'Instagram' },
-  { Icon: Facebook,  href: '#', label: 'Facebook' },
-  { Icon: Youtube,   href: '#', label: 'YouTube' },
-  { Icon: Music,     href: '#', label: 'Podcast' },
-]
 
 export default function Footer() {
-  const [email, setEmail] = useState('')
-  const [done, setDone]   = useState(false)
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (email.trim()) { setDone(true); setEmail('') }
-  }
-
   return (
-    <footer
-      ref={ref}
-      style={{ background: '#FAF7F3', borderTop: '1px solid #EDE4D8' }}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-8">
+    <footer className="relative pt-24 pb-12 overflow-hidden bg-[#FAF7F2]">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
+        <div className="gradient-orb orb-blush top-[-200px] left-[-200px] w-[600px] h-[600px]" />
+      </div>
 
-        {/* Main grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '2fr 1fr 1fr 1fr 2fr',
-            gap: 48,
-            marginBottom: 56,
-          }}
-          className="footer-grid"
-        >
-
-          {/* Brand column */}
-          <div>
-            {/* Name only, no icon */}
-            <div style={{ marginBottom: 16 }}>
-              <p style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '1rem',
-                fontWeight: 600,
-                color: '#1A1A1A',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                lineHeight: 1.2,
-                marginBottom: 4,
-              }}>
-                Kanchan Kulkarni
-              </p>
-              <p style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.65rem',
-                color: '#7D7D7D',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-              }}>
-                Relationship Expert
-              </p>
+      <div className="container-custom relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+          
+          {/* Brand Column */}
+          <div className="lg:col-span-4">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E89AAA" strokeWidth="1.5">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg>
+              </div>
+              <h2 className="text-xl font-bold">Unapologetically KK</h2>
             </div>
-
-            {/* Social icons */}
-            <div style={{ display: 'flex', gap: 10, marginTop: 24 }}>
-              {socials.map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: '50%',
-                    border: '1px solid #DCC7A1',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#7D7D7D',
-                    transition: 'color 0.25s, border-color 0.25s, background 0.25s',
-                    textDecoration: 'none',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.color = '#C5A26E'
-                    e.currentTarget.style.borderColor = '#C5A26E'
-                    e.currentTarget.style.background = '#FBF6EF'
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.color = '#7D7D7D'
-                    e.currentTarget.style.borderColor = '#DCC7A1'
-                    e.currentTarget.style.background = 'transparent'
-                  }}
-                >
-                  <Icon size={15} />
+            <p className="text-secondary leading-relaxed mb-8 max-w-sm">
+              Empowering women to reclaim their peace, redefine their relationships, and live life on their own terms. Your journey to emotional freedom starts here.
+            </p>
+            <div className="flex gap-4">
+              {['Instagram', 'LinkedIn', 'YouTube', 'Podcast'].map((social) => (
+                <a key={social} href="#" className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-secondary hover:text-pink-accent hover:border-pink-200 transition-all duration-300">
+                  <span className="sr-only">{social}</span>
+                  <div className="w-4 h-4 bg-current rounded-sm opacity-60" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <p style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              color: '#1A1A1A',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              marginBottom: 20,
-            }}>
-              Quick Links
-            </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {quickLinks.map(l => (
-                <li key={l}>
-                  <a href="#" style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.85rem',
-                    color: '#555555',
-                    textDecoration: 'none',
-                    transition: 'color 0.25s',
-                  }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#C5A26E'}
-                    onMouseLeave={e => e.currentTarget.style.color = '#555555'}
-                  >{l}</a>
-                </li>
-              ))}
-            </ul>
+          {/* Links Columns */}
+          <div className="lg:col-span-4 grid grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-bold text-main mb-8 tracking-widest uppercase text-xs">Quick Links</h3>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-secondary hover:text-pink-accent transition-colors">Home</a></li>
+                <li><a href="#coaching" className="text-secondary hover:text-pink-accent transition-colors">Coaching</a></li>
+                <li><a href="#about" className="text-secondary hover:text-pink-accent transition-colors">About KK</a></li>
+                <li><a href="#testimonials" className="text-secondary hover:text-pink-accent transition-colors">Success Stories</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold text-main mb-8 tracking-widest uppercase text-xs">Resources</h3>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-secondary hover:text-pink-accent transition-colors">Free Guide</a></li>
+                <li><a href="#" className="text-secondary hover:text-pink-accent transition-colors">Blog</a></li>
+                <li><a href="#" className="text-secondary hover:text-pink-accent transition-colors">Podcast</a></li>
+                <li><a href="#" className="text-secondary hover:text-pink-accent transition-colors">Foundation</a></li>
+              </ul>
+            </div>
           </div>
 
-          {/* Resources */}
-          <div>
-            <p style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              color: '#1A1A1A',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              marginBottom: 20,
-            }}>
-              Resources
-            </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {resources.map(l => (
-                <li key={l}>
-                  <a href="#" style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.85rem',
-                    color: '#555555',
-                    textDecoration: 'none',
-                    transition: 'color 0.25s',
-                  }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#C5A26E'}
-                    onMouseLeave={e => e.currentTarget.style.color = '#555555'}
-                  >{l}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <p style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              color: '#1A1A1A',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              marginBottom: 20,
-            }}>
-              Legal
-            </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {legal.map(l => (
-                <li key={l}>
-                  <a href="#" style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.85rem',
-                    color: '#555555',
-                    textDecoration: 'none',
-                    transition: 'color 0.25s',
-                  }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#C5A26E'}
-                    onMouseLeave={e => e.currentTarget.style.color = '#555555'}
-                  >{l}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <p style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              color: '#1A1A1A',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              marginBottom: 12,
-            }}>
-              Stay Connected
-            </p>
-            <p style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: '0.82rem',
-              color: '#7D7D7D',
-              lineHeight: 1.6,
-              marginBottom: 20,
-            }}>
-              Join my newsletter for insights, tips and updates.
-            </p>
-            {done ? (
-              <p style={{ fontFamily: "'Lato', sans-serif", fontSize: '0.85rem', color: '#C5A26E' }}>
-                ✓ You're on the list!
+          {/* Newsletter Column */}
+          <div className="lg:col-span-4">
+            <div className="glass-card p-8 rounded-[40px] border-white/50">
+              <h3 className="text-lg font-bold text-main mb-4">Stay Inspired</h3>
+              <p className="text-sm text-secondary mb-6 leading-relaxed">
+                Receive weekly insights on healing, boundaries, and relationship mastery directly in your inbox.
               </p>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8 }}>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  style={{
-                    flex: 1,
-                    minWidth: 0,
-                    padding: '10px 16px',
-                    borderRadius: 50,
-                    border: '1px solid #DCC7A1',
-                    background: '#FFFFFF',
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.82rem',
-                    color: '#1A1A1A',
-                    outline: 'none',
-                  }}
+              <form className="space-y-3">
+                <input 
+                  type="email" 
+                  placeholder="Email address" 
+                  className="w-full px-6 py-3 rounded-2xl bg-white/40 border border-white/40 focus:outline-none focus:ring-1 focus:ring-pink-200 text-sm"
                 />
-                <button
-                  type="submit"
-                  style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: '50%',
-                    background: '#C5A26E',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                  }}
-                  aria-label="Subscribe"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
+                <button className="btn-primary w-full py-3 text-sm">
+                  Subscribe
                 </button>
               </form>
-            )}
+            </div>
           </div>
-        </motion.div>
 
-        {/* Divider */}
-        <div style={{ height: 1, background: '#EDE4D8', marginBottom: 24 }} />
+        </div>
 
-        {/* Bottom bar */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-          <p style={{
-            fontFamily: "'Lato', sans-serif",
-            fontSize: '0.78rem',
-            color: '#7D7D7D',
-            textAlign: 'center',
-          }}>
-            © {new Date().getFullYear()} Unapologetically KK. All Rights Reserved.
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-pink-100 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[10px] font-bold tracking-widest text-secondary/50 uppercase">
+            © 2026 UNAPOLOGETICALLY KK. ALL RIGHTS RESERVED.
           </p>
+          <div className="flex gap-8">
+            <a href="#" className="text-[10px] font-bold tracking-widest text-secondary/50 uppercase hover:text-pink-accent">Privacy Policy</a>
+            <a href="#" className="text-[10px] font-bold tracking-widest text-secondary/50 uppercase hover:text-pink-accent">Terms of Service</a>
+          </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 1024px) {
-          .footer-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 32px !important; }
-        }
-        @media (max-width: 640px) {
-          .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 28px !important; }
-        }
-      `}</style>
     </footer>
   )
 }

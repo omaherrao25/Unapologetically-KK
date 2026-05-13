@@ -1,126 +1,69 @@
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
 
 export default function CTASection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
-
   return (
-    <section
-      id="contact"
-      ref={ref}
-      style={{ background: '#F3EAE0', overflow: 'hidden' }}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          minHeight: 480,
-          gap: 0,
-        }}
-          className="cta-grid"
-        >
-
-          {/* LEFT — Photo placeholder */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            style={{ position: 'relative' }}
-          >
-            <div
-              className="photo-placeholder"
-              style={{
-                width: '100%',
-                height: '100%',
-                minHeight: 400,
-                border: 'none',
-                borderRight: '1px dashed #C5A26E',
-                borderRadius: 0,
-                background: '#EDE0D0',
-              }}
-            >
-              <div style={{
-                width: 64,
-                height: 64,
-                borderRadius: '50%',
-                background: '#DCC7A1',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7A5E3A" strokeWidth="1.5">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-              <p style={{ fontFamily: "'Lato', sans-serif", fontSize: '0.75rem', color: '#A08060', letterSpacing: '0.1em' }}>
-                Photo of Kanchan Kulkarni
-              </p>
-            </div>
-          </motion.div>
-
-          {/* RIGHT — Text */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              padding: '64px 56px',
-            }}
-            className="cta-text"
-          >
-            <h2
-              className="section-heading"
-              style={{
-                fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                marginBottom: 20,
-                lineHeight: 1.2,
-              }}
-            >
-              You don't have to stay in{' '}
-              <span style={{ fontStyle: 'italic' }}>survival mode.</span>
-            </h2>
-
-            <p style={{
-              fontFamily: "'Lato', sans-serif",
-              fontSize: '1rem',
-              color: '#555555',
-              lineHeight: 1.7,
-              marginBottom: 36,
-            }}>
-              You deserve a life filled with love, peace and joy.
-            </p>
-
-            <div>
-              <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="btn-primary">
-                Book Your Free Strategy Call
-              </a>
-            </div>
-
-            {/* Cursive sign-off */}
-            <p style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: 'italic',
-              fontSize: '1.15rem',
-              color: '#A08060',
-              marginTop: 36,
-            }}>
-              Let's create your next chapter together. ♡
-            </p>
-          </motion.div>
-        </div>
+    <section id="resource" className="section-padding relative overflow-hidden bg-[#F6E7E7]/30">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none opacity-20">
+        <svg viewBox="0 0 400 400" className="w-full h-full text-pink-300">
+          <path fill="currentColor" d="M320,160C320,248.4,248.4,320,160,320S0,248.4,0,160S71.6,0,160,0S320,71.6,320,160z" opacity="0.3" transform="translate(100, 100)" />
+        </svg>
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .cta-grid { grid-template-columns: 1fr !important; }
-          .cta-text { padding: 48px 24px !important; }
-          .cta-grid > div:first-child { min-height: 280px !important; border-right: none !important; border-bottom: 1px dashed #C5A26E !important; }
-        }
-      `}</style>
+      <div className="container-custom relative z-10">
+        <div className="glass-card rounded-[64px] overflow-hidden p-12 lg:p-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center border-white/40">
+          
+          {/* Left: Ebook Mockup */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex justify-center"
+          >
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-pink-200/30 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <img 
+                src="/brain/7f8f530d-429f-43bc-a2bd-d510b060a96d/ebook_mockup_1778667754086.png" 
+                alt="Free Guide: 5 Steps to Reclaim Your Peace & Power" 
+                className="w-full max-w-[400px] rounded-2xl shadow-2xl transform transition-transform duration-700 group-hover:rotate-2 group-hover:scale-105"
+              />
+            </div>
+          </motion.div>
+
+          {/* Right: Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="label-caps mb-6 block">FREE RESOURCE</span>
+            <h2 className="text-4xl lg:text-5xl font-bold text-main mb-6 leading-tight">
+              5 Steps to Reclaim Your Peace & Power
+            </h2>
+            <p className="text-lg text-secondary mb-10 leading-relaxed">
+              Start your transformation journey today with this exclusive guide. Simple, actionable steps to help you break free from survival mode and rediscover your true self.
+            </p>
+
+            <form className="flex flex-col sm:flex-row gap-4">
+              <input 
+                type="email" 
+                placeholder="Enter your email address" 
+                className="flex-grow px-8 py-4 rounded-full bg-white/60 border border-white/50 focus:outline-none focus:ring-2 focus:ring-pink-200 text-main placeholder:text-secondary/50 backdrop-blur-sm"
+              />
+              <button type="submit" className="btn-primary whitespace-nowrap">
+                Get Free Guide
+              </button>
+            </form>
+            
+            <p className="text-xs text-secondary/60 mt-4 px-4 italic">
+              Your privacy is respected. Unsubscribe at any time.
+            </p>
+          </motion.div>
+
+        </div>
+      </div>
     </section>
   )
 }
