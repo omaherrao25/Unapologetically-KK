@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background-color: #FFFFFF;
+  color: #1A1A1A;
+  font-family: 'Lato', 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #FAF7F3; }
+::-webkit-scrollbar-thumb { background: #C5A26E; border-radius: 3px; }
+
+/* ── Selection ─────────────────────────────────── */
+::selection { background: rgba(197,162,110,0.2); color: #1A1A1A; }
+
+/* ── Typography ────────────────────────────────── */
+.font-serif { font-family: 'Playfair Display', Georgia, serif !important; }
+.font-sans  { font-family: 'Lato', 'Poppins', sans-serif !important; }
+
+/* ── Eyebrow ───────────────────────────────────── */
+.eyebrow {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C5A26E;
+}
+
+/* ── Section heading ───────────────────────────── */
+.section-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1A1A1A;
+}
+
+/* ── Gold divider ──────────────────────────────── */
+.divider-gold {
+  width: 50px;
+  height: 2px;
+  background: #C5A26E;
+  display: block;
+  margin: 0 auto;
+}
+.divider-gold-left {
+  width: 50px;
+  height: 2px;
+  background: #C5A26E;
+  display: block;
+}
+
+/* ── Navbar ────────────────────────────────────── */
+.nav-link {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1A1A1A;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #C5A26E;
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: #C5A26E; }
+.nav-link:hover::after { width: 100%; }
+
+/* ── Buttons ───────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 28px;
+  background: #C5A26E;
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(197,162,110,0.3);
+}
+.btn-primary:hover {
+  background: #B38E5D;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(197,162,110,0.45);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 28px;
+  background: transparent;
+  color: #1A1A1A;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  border: 1.5px solid #1A1A1A;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: #1A1A1A;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 28px;
+  background: transparent;
+  color: #C5A26E;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  border: 1.5px solid #C5A26E;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline-gold:hover {
+  background: #C5A26E;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ── Cards ─────────────────────────────────────── */
+.card-clean {
+  background: #FFFFFF;
+  border: 1px solid #EDE4D8;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-clean:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  border-color: #C5A26E;
+}
+
+/* ── Step icon circle ──────────────────────────── */
+.step-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1.5px solid #DCC7A1;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.step-circle:hover {
+  border-color: #C5A26E;
+  box-shadow: 0 4px 20px rgba(197,162,110,0.2);
+}
+
+/* ── Photo placeholder ─────────────────────────── */
+.photo-placeholder {
+  background: #F3EAE0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #A08060;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1.5px dashed #C5A26E;
+}
+
+/* ── Avatar placeholder ────────────────────────── */
+.avatar-ph {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #DCC7A1;
+  border: 2px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7A5E3A;
+  flex-shrink: 0;
+}
+
+/* ── Quote mark ────────────────────────────────── */
+.quote-open {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  line-height: 0.5;
+  color: #DCC7A1;
+  font-style: italic;
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* ── Navbar scroll state ───────────────────────── */
+.navbar-scrolled {
+  background: rgba(255,255,255,0.95) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.06);
+}
+
+/* ── Connector line ────────────────────────────── */
+.step-connector {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #DCC7A1, #EDE4D8);
+  margin-top: -40px;
+}
+
+/* ── Floating quote card ───────────────────────── */
+.quote-card {
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+  padding: 20px 22px;
+  max-width: 230px;
+}
+
+/* ── Mobile CTA ────────────────────────────────── */
+@media (max-width: 768px) {
+  .mobile-float-cta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    white-space: nowrap;
+  }
+}
+
+/* ── Animations ────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
