@@ -12,7 +12,7 @@ export default function ProblemSection() {
   return (
     <section className="relative z-20 -mt-24 px-6 mb-20">
       <div className="container-custom">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -21,19 +21,18 @@ export default function ProblemSection() {
         >
           <div className="grid grid-cols-1 md:grid-cols-5">
             {points.map((point, index) => (
-              <div 
+              <div
                 key={index}
-                className={`flex flex-col items-center py-14 px-6 relative group ${
-                  index !== points.length - 1 ? 'md:border-r border-white/5' : ''
-                }`}
+                className={`flex flex-col items-center py-14 px-6 relative group ${index !== points.length - 1 ? 'md:border-r border-white/5' : ''
+                  }`}
               >
                 {/* Icon in Circle - More transparent */}
                 <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-md shadow-sm border border-white/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-white/50 transition-all duration-500">
-                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-pink-accent">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-pink-accent">
                     <path d={point.icon} />
                   </svg>
                 </div>
-                
+
                 <h3 className="text-[13px] font-semibold text-main/70 text-center leading-tight tracking-tight max-w-[140px] group-hover:text-main transition-colors duration-300">
                   {point.title}
                 </h3>
