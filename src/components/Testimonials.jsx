@@ -1,165 +1,70 @@
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { Star } from 'lucide-react'
-
-const testimonials = [
-  {
-    quote: 'I finally understand myself and my relationship patterns. I feel lighter, happier and my relationship has never been better.',
-    name: 'Neha P.',
-    location: 'Dubai, UAE',
-    initials: 'NP',
-    bg: '#DCC7A1',
-  },
-  {
-    quote: "Kanchan helped me set boundaries without guilt. I've regained my confidence and peace.",
-    name: 'Priya S.',
-    location: 'Bangalore, India',
-    initials: 'PS',
-    bg: '#C4A882',
-  },
-  {
-    quote: "I went from feeling invisible to feeling valued, loved and truly seen.",
-    name: 'Ayesha K.',
-    location: 'London, UK',
-    initials: 'AK',
-    bg: '#B89870',
-  },
-]
+import { User } from 'lucide-react'
 
 export default function Testimonials() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const testimonials = [
+    {
+      name: 'Priya S.',
+      location: 'Mumbai',
+      text: 'Kanchan helped me see patterns I never knew existed. My marriage has been transformed from constant conflict to deep understanding.'
+    },
+    {
+      name: 'Anjali K.',
+      location: 'London',
+      text: 'I finally reclaimed my peace. The Emotional Reclamation Method is not just coaching; it is a life-changing spiritual journey.'
+    },
+    {
+      name: 'Meera R.',
+      location: 'New York',
+      text: 'Working with KK was the best investment I ever made for myself. I am now more confident and at peace than I have ever been.'
+    }
+  ]
 
   return (
-    <section
-      id="testimonials"
-      style={{ background: '#FAF7F3', padding: '96px 0' }}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12" ref={ref}>
+    <section id="testimonials" className="py-20 relative overflow-hidden bg-transparent">
+      {/* Floating Circles */}
+      <div className="absolute top-1/4 -left-20 w-64 h-64 glass-card rounded-full blur-2xl opacity-20 animate-float-slow" />
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 glass-card rounded-full blur-3xl opacity-30 animate-float-slow" style={{ animationDelay: '2s' }} />
 
-        {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="eyebrow"
-            style={{ marginBottom: 16 }}
-          >
-            Life-Changing Transformations
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.12 }}
-            className="section-heading"
-            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)' }}
-          >
-            Real Women. Real Stories. Real Results.
-          </motion.h2>
+      <div className="container-custom relative z-10">
+        <div className="text-center mb-16">
+          <span className="label-caps mb-4 block text-muted-rose font-bold uppercase tracking-widest">REAL WOMEN. REAL STORIES. REAL RESULTS.</span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-main">Success Stories</h2>
         </div>
 
-        {/* Cards */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 24,
-          marginBottom: 48,
-        }}
-          className="testimonial-grid"
-        >
-          {testimonials.map((t, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {testimonials.map((t, index) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 28 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.65, delay: 0.12 * i + 0.2 }}
-              className="card-clean"
-              style={{ padding: '36px 32px' }}
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              className="glass-card p-10 rounded-[40px] flex flex-col h-full relative"
             >
-              {/* Quote mark */}
-              <span className="quote-open">"</span>
-
-              {/* Stars */}
-              <div style={{ display: 'flex', gap: 3, marginBottom: 16 }}>
-                {[...Array(5)].map((_, j) => (
-                  <Star key={j} size={13} fill="#C5A26E" color="#C5A26E" />
-                ))}
-              </div>
-
-              {/* Text */}
-              <p style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: '0.92rem',
-                color: '#3D3D3D',
-                lineHeight: 1.7,
-                marginBottom: 28,
-              }}>
-                {t.quote}
+              <div className="text-pink-accent text-5xl font-serif mb-6 opacity-40 leading-none">“</div>
+              <p className="text-lg text-main mb-8 flex-grow leading-relaxed italic">
+                {t.text}
               </p>
-
-              {/* Author row */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                {/* Avatar placeholder */}
-                <div style={{
-                  width: 46,
-                  height: 46,
-                  borderRadius: '50%',
-                  background: t.bg,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  fontFamily: "'Lato', sans-serif",
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  color: '#FFFFFF',
-                }}>
-                  {t.initials}
+              <div className="flex items-center gap-4 mt-auto">
+                <div className="w-14 h-14 rounded-full bg-white/60 backdrop-blur-md flex items-center justify-center border border-white shadow-sm text-pink-accent">
+                  <User size={24} />
                 </div>
                 <div>
-                  <p style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.85rem',
-                    fontWeight: 700,
-                    color: '#1A1A1A',
-                    marginBottom: 2,
-                  }}>
-                    — {t.name}
-                  </p>
-                  <p style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.75rem',
-                    color: '#7D7D7D',
-                  }}>
-                    {t.location}
-                  </p>
+                  <h4 className="font-bold text-main">{t.name}</h4>
+                  <p className="text-xs text-secondary tracking-widest uppercase">{t.location}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          style={{ textAlign: 'center' }}
-        >
-          <a href="#testimonials" className="btn-primary">
+        <div className="text-center">
+          <button className="btn-secondary">
             Read More Success Stories
-          </a>
-        </motion.div>
+          </button>
+        </div>
       </div>
-
-      <style>{`
-        @media (max-width: 900px) {
-          .testimonial-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 580px) {
-          .testimonial-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </section>
   )
 }
