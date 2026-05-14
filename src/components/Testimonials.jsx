@@ -23,8 +23,8 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-20 relative overflow-hidden bg-transparent">
       {/* Floating Circles */}
-      <div className="absolute top-1/4 -left-20 w-64 h-64 glass-card rounded-full blur-2xl opacity-20 animate-float" />
-      <div className="absolute bottom-1/4 -right-20 w-80 h-80 glass-card rounded-full blur-3xl opacity-30 animate-float" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/4 -left-20 w-64 h-64 glass-card rounded-full blur-2xl opacity-20 animate-float-slow" />
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 glass-card rounded-full blur-3xl opacity-30 animate-float-slow" style={{ animationDelay: '2s' }} />
 
       <div className="container-custom relative z-10">
         <div className="text-center mb-16">
