@@ -111,7 +111,7 @@ export default function Footer() {
       </div>
 
       <div className="bg-[#1A2D37] px-6 md:px-16 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <p className="font-sans text-xs text-ivory/25">© 2025 Kanchan Kulkarni · UAKK</p>
+        <p className="font-sans text-xs text-ivory/25">© {new Date().getFullYear()} Kanchan Kulkarni · UAKK</p>
         <div className="flex gap-4">
           <a href="#" className="font-sans text-xs text-ivory/25 hover:text-ivory/50 transition-colors">
             Privacy
