@@ -18,7 +18,7 @@ export default function PainPoints() {
         transition={{ duration: 0.65, ease }}
       >
         <SectionTag>The Problem</SectionTag>
-        <h2 className="font-serif text-2xl md:text-3xl text-slate max-w-xl leading-snug mb-4">
+        <h2 className="font-serif text-4xl md:text-5xl text-slate max-w-4xl leading-snug mb-4">
           Does your life look successful on the outside — but feel empty on the inside?
         </h2>
         <p className="font-sans text-sm text-mid leading-relaxed max-w-lg mb-12">
@@ -35,7 +35,7 @@ export default function PainPoints() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1, ease }}
             >
-              <span className="font-serif text-4xl text-bronze/15 leading-none">{point.num}</span>
+              <span className="font-serif text-6xl text-bronze/15 leading-none">{point.num}</span>
               <p
                 className="font-sans text-xs leading-relaxed text-charcoal [&_strong]:text-slate [&_strong]:font-medium"
                 dangerouslySetInnerHTML={{ __html: point.text }}

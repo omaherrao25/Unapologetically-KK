@@ -27,12 +27,15 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex flex-col leading-tight">
-          <span className="font-serif tracking-widest text-slate text-sm font-light">
+        <a href="#" className="flex flex-col gap-1 leading-none">
+          <span className="font-serif tracking-[0.22em] text-slate text-base font-medium">
             {SITE_NAME.toUpperCase()}
           </span>
-          <span className="font-sans text-tag uppercase tracking-widest text-bronze">
-            {SITE_TAGLINE}
+          <span className="flex items-center gap-2">
+            <span className="w-4 h-px bg-bronze" />
+            <span className="font-sans text-tag uppercase tracking-[0.2em] text-bronze font-medium">
+              {SITE_TAGLINE}
+            </span>
           </span>
         </a>
 
@@ -41,7 +44,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="font-sans text-xs tracking-widest uppercase text-slate hover:text-bronze transition-colors duration-200"
+              className="font-sans text-xs tracking-[0.18em] uppercase text-slate font-medium hover:text-bronze transition-colors duration-200"
             >
               {link.label}
             </a>
@@ -87,7 +90,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-sans text-xs tracking-widest uppercase text-slate hover:text-bronze transition-colors"
+                className="font-sans text-xs tracking-[0.18em] uppercase text-slate font-medium hover:text-bronze transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}

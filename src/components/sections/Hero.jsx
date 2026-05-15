@@ -35,7 +35,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          className="font-serif text-3xl md:text-4xl italic font-light text-ivory/90 leading-snug max-w-md"
+          className="font-serif text-4xl md:text-5xl italic font-light text-ivory/90 leading-snug max-w-md"
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.1, ease }}

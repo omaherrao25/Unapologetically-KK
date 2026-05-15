@@ -7,7 +7,7 @@ export default function ProcessStep({ number, title, description, isLast }) {
         !isLast ? 'border-b border-white/10 lg:border-b-0 lg:border-r lg:border-white/10' : ''
       }`}
     >
-      <span className="font-serif text-5xl text-bronze/20 leading-none">{number}</span>
+      <span className="font-serif text-8xl text-bronze/20 leading-none">{number}</span>
       <h3 className="font-serif text-xl text-ivory">{title}</h3>
       <p className="font-sans text-xs text-ivory/55 font-light leading-relaxed">{description}</p>
     </div>

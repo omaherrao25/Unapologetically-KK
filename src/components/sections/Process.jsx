@@ -21,7 +21,7 @@ export default function Process() {
         transition={{ duration: 0.65, ease }}
       >
         <SectionTag light>The Process</SectionTag>
-        <h2 className="font-serif text-2xl md:text-3xl italic font-light text-ivory/90 mb-14">
+        <h2 className="font-serif text-3xl md:text-4xl italic font-light text-ivory/90 mb-14">
           Focused. Results-driven. No endless sessions.
         </h2>
 
