@@ -1,28 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        main: '#202020',
-        secondary: '#666666',
-        'pink-accent': '#E89AAA',
-        'muted-rose': '#D98C9B',
-        'warm-beige': '#F3E7E1',
-        'soft-gold': '#D5B07B',
-        'soft-blush': '#F6E7E7',
-        'bg-luxury': '#FAF7F2',
+        ivory: '#FAF8F4',
+        cream: '#F0EBE0',
+        slate: '#2C4656',
+        'slate-mid': '#3D5A6E',
+        'slate-dark': '#1E333F',
+        bronze: '#8B6240',
+        'bronze-light': '#B8905E',
+        'bronze-pale': '#F2E8D9',
+        charcoal: '#1C1C1C',
+        mid: '#5A5A5A',
+        soft: '#9A9A9A',
       },
       fontFamily: {
-        heading: ['Outfit', 'Inter', 'sans-serif'],
-        sans: ['Inter', 'Manrope', 'sans-serif'],
-        editorial: ['Manrope', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+        sans: ['Jost', 'Helvetica Neue', 'sans-serif'],
       },
-      backgroundImage: {
-        'glass-gradient': 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%)',
+      fontSize: {
+        tag: ['0.6875rem', { letterSpacing: '0.22em' }],
       },
     },
   },
